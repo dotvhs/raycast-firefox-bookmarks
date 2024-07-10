@@ -27,10 +27,10 @@ const getProfileName = (userDirectoryPath: string) => {
   }
 };
 
-export const getHistoryDbPath = (): string => {
-  const userDirectoryPath = userDataDirectoryPath();
-  return path.join(userDirectoryPath, getProfileName(userDirectoryPath), "places.sqlite");
-};
+// export const getHistoryDbPath = (): string => {
+//   const userDirectoryPath = userDataDirectoryPath();
+//   return path.join(userDirectoryPath, getProfileName(userDirectoryPath), "places.sqlite");
+// };
 
 export const getBookmarksDirectoryPath = (): string => {
   const userDirectoryPath = userDataDirectoryPath();

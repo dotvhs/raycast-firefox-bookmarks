@@ -4,32 +4,9 @@ import { HistoryEntry, Tab } from "../interfaces";
 import { getFavicon } from "@raycast/utils";
 
 export class FirefoxListEntries {
-  public static NewTabEntry = NewTabEntry;
   public static HistoryEntry = HistoryListEntry;
-  public static TabListEntry = TabListEntry;
 }
 
-function NewTabEntry({ searchText }: { searchText?: string }) {
-  return (
-    <List.Item
-      title={!searchText ? "Open Empty Tab" : `Search "${searchText}"`}
-      icon={{ source: !searchText ? Icon.Plus : Icon.MagnifyingGlass }}
-      actions={<FirefoxActions.NewTab query={searchText} />}
-    />
-  );
-}
-
-function TabListEntry({ tab }: { tab: Tab }) {
-  return (
-    <List.Item
-      title={tab.title}
-      subtitle={tab.urlWithoutScheme()}
-      keywords={[tab.urlWithoutScheme()]}
-      actions={<FirefoxActions.TabListItem tab={tab} />}
-      icon={tab.googleFavicon()}
-    />
-  );
-}
 
 function HistoryListEntry({ entry: { url, title, id, lastVisited } }: { entry: HistoryEntry }) {
   return (
