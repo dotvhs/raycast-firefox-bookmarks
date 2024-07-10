@@ -18,6 +18,7 @@ function extractBookmarkFromBookmarkDirectory(bookmarkDirectory: any): HistoryEn
       title: bookmarkDirectory.title,
       url: bookmarkDirectory.uri,
       lastVisited: bookmarkDirectory.dateAdded,
+      favIcon: bookmarkDirectory.iconUri,
     });
   }
   return bookmarks;

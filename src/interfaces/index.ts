@@ -27,6 +27,7 @@ export interface HistoryEntry {
   url: string;
   title: string;
   lastVisited: Date;
+  favIcon: string;
 }
 
 export interface SearchResult<T> {
