@@ -1,59 +1,27 @@
 import { closeMainWindow, getPreferenceValues, popToRoot } from "@raycast/api";
 import { runAppleScript } from "run-applescript";
+import { execSync } from "child_process";
 import { Preferences, Tab } from "../interfaces";
-import { NOT_INSTALLED_MESSAGE, SEARCH_ENGINE } from "../constants";
+import { OPEN_COMMAND, NOT_INSTALLED_MESSAGE, SEARCH_ENGINE } from "../constants";
 
-export async function openNewTab(queryText: string | null | undefined): Promise<boolean | string> {
+export async function openNewTab(queryText: string | null | undefined) {
   popToRoot();
   closeMainWindow({ clearRootSearch: true });
 
-  const script = `
-    tell application "Firefox"
-      activate
-      repeat while not frontmost
-        delay 0.1
-      end repeat
-      tell application "System Events"
-        keystroke "t" using {command down}
-        ${
-          queryText
-            ? `keystroke "l" using {command down}
-           keystroke "a" using {command down}
-           key code 51
-           keystroke "${SEARCH_ENGINE[getPreferenceValues<Preferences>().searchEngine.toLowerCase()]}${queryText}"
-           key code 36`
-            : ""
-        }
-      end tell
-    end tell
-  `;
+  const script = `${OPEN_COMMAND} ${queryText ? queryText : ""}`;
   await checkAppInstalled();
 
-  return await runAppleScript(script);
+  return execSync(script);
 }
 
-export async function openHistoryTab(url: string): Promise<boolean | string> {
+export function openHistoryTab(url: string) {
   popToRoot();
   closeMainWindow({ clearRootSearch: true });
 
-  const script = `
-    tell application "Firefox"
-      activate
-      repeat while not frontmost
-        delay 0.1
-      end repeat
-      tell application "System Events"
-        keystroke "t" using {command down}
-        keystroke "l" using {command down}
-        keystroke "a" using {command down}
-        key code 51
-        keystroke "${url}"
-        key code 36
-      end tell
-    end tell
-  `;
+  const script = `${OPEN_COMMAND} ${url}`;
+  // await checkAppInstalled();
 
-  return await runAppleScript(script);
+  return execSync(script);
 }
 
 export async function setActiveTab(tab: Tab): Promise<void> {

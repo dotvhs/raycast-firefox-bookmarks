@@ -1,14 +1,18 @@
-# Mozilla Firefox
+# Search Bookmarks in Firefox
 
-Search and open Mozilla Firefox tabs from search query, opened tabs, bookmarks and history.
+Search and open Firefox bookmarks directly from Raycast.
 
-New Tab search can be configured to search from the following sources:
-- Google(default)
-- DuckDuckGo
-- Bing
-- Brave
-- Baidu
+This Raycast extension is a trimmed down version of Mozilla Firefox extension by @crisboarna and @serhii_kravchenko.
 
-Limitations (due to limited AppleScript support in Firefox):
-- When searching open tabs, the session file is read and parsed to get the list of open tabs. This means that the list of open tabs will not be updated until the session file is updated. This is done by Firefox when it checkpoints itself or when Firefox is closed.
-- Selecting an open tab will result in cycling through open tabs until desired tab. This is due to the fact that AppleScript does not support opening a specific tab in Firefox.
+The key differences are:
+- It uses shell command instead of Apple Script to open pages making it way faster
+- The extension will only focus on bookmarks
+- Filters out bookmarklets
+
+TODO:
+- [x] Move from Apple Script to shell command
+- [x] Do not show bookmarklets
+- [ ] Get favicons from Firefox directly instead of Google
+- [ ] Remove unnecessary code of removed features
+- [ ] Design a new icon
+- [ ] Publish the extension

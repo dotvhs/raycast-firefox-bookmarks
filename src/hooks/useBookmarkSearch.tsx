@@ -49,8 +49,9 @@ export function useBookmarkSearch(query?: string): SearchResult<HistoryEntry> {
         setData(
           bookmarks.filter(
             (bookmark) =>
-              bookmark.title.toLowerCase().includes(query?.toLowerCase() || "") ||
-              bookmark.url.toLowerCase().includes(query?.toLowerCase() || "")
+              (bookmark.title.toLowerCase().includes(query?.toLowerCase() || "") ||
+                bookmark.url.toLowerCase().includes(query?.toLowerCase() || "")) &&
+              !bookmark.url.toLowerCase().startsWith("javascript:")
           )
         );
         setIsLoading(false);

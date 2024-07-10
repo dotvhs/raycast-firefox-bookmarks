@@ -45,7 +45,7 @@ function MozillaFirefoxGoToTab(props: { tab: Tab }) {
 
 function MozillaFirefoxHistoryTab({ url }: { url: string }) {
   async function handleAction() {
-    await openHistoryTab(url);
+    openHistoryTab(url);
     await closeMainWindow();
   }
   return <ActionPanel.Item title="Open in Firefox" icon={{ source: Icon.Eye }} onAction={handleAction} />;

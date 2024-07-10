@@ -1,3 +1,7 @@
+import { getPreferenceValues } from "@raycast/api";
+
+const preferences = getPreferenceValues<Preferences>();
+
 export const SEARCH_ENGINE: { [key: string]: string } = {
   google: `https://google.com/search?q=`,
   bing: `https://www.bing.com/search?q=`,
@@ -5,6 +9,8 @@ export const SEARCH_ENGINE: { [key: string]: string } = {
   brave: `https://search.brave.com/search?q=`,
   duckduckgo: `https://duckduckgo.com/?q=`,
 };
+
+export const OPEN_COMMAND = preferences["open-firefox"];
 
 export const DownloadText = `
   # 🚨Error: Mozilla Firefox browser is not installed
@@ -30,5 +36,6 @@ export const UnknownErrorText = `
 
 export const DEFAULT_ERROR_TITLE = "An Error Occurred";
 
-export const NOT_INSTALLED_MESSAGE = "Mozilla Firefox not installed";
-export const NO_BOOKMARKS_MESSAGE = "Mozilla Firefox has no bookmarks";
+export const NOT_INSTALLED_MESSAGE =
+  "Firefox doesn't seem to be installed. Check extension settings if you're using a fork.";
+export const NO_BOOKMARKS_MESSAGE = "No bookmarks found";
