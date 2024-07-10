@@ -23,7 +23,8 @@
       "subtitle": "Console command to open Firefox",
       "description": "Shell command to open Firefox. Adjust this in case you're using non-standard version of Firefox.",
       "default": "open -a firefox",
-      "placeholder": "open -a firefox"
+      "placeholder": "open -a firefox",
+      "required": false
     }
   ],
   "commands": [
