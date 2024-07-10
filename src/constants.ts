@@ -3,6 +3,7 @@ import { getPreferenceValues } from "@raycast/api";
 const preferences = getPreferenceValues<Preferences>();
 
 export const OPEN_COMMAND = preferences["open-firefox"];
+export const USE_DB = preferences["use-database"];
 
 export const DownloadText = `
   # 🚨Error: Mozilla Firefox browser is not installed

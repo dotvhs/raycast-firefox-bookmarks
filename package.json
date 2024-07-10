@@ -17,6 +17,24 @@
   "license": "MIT",
   "preferences": [
     {
+      "name": "use-database",
+      "type": "dropdown",
+      "title": "Bookmark source",
+      "description": "JSON source is faster to read but new bookmarks show up only when Firefox updates the backup folder.\n\nChange to SQL if you want new bookmarks to be available immediately.",
+      "default": "json",
+      "data": [
+        {
+          "title": "JSON",
+          "value": "json"
+        },
+        {
+          "title": "SQL Database",
+          "value": "sql"
+        }
+      ],
+      "required": false
+    },
+    {
       "name": "open-firefox",
       "type": "textfield",
       "title": "Firefox Command",
