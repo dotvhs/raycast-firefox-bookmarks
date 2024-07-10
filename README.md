@@ -16,5 +16,6 @@ TODO:
 - [x] Do not show bookmarklets
 - [x] Get favicons from Firefox directly (WIP)
 - [x] Remove unnecessary code of removed features
+- [ ] Read Bookmarks from SQLite instead of bookmark backups
 - [ ] Design a new icon
 - [ ] Publish the extension
