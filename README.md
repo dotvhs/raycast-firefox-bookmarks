@@ -14,8 +14,9 @@ TODO:
 
 - [x] Move from Apple Script to shell command
 - [x] Do not show bookmarklets
-- [x] Get favicons from Firefox directly (WIP)
+- [x] Get favicons from Firefox directly **(WIP)**
 - [x] Remove unnecessary code of removed features
-- [ ] Read Bookmarks from SQLite instead of bookmark backups
+- [x] Read Bookmarks from SQLite as an option **(WIP)**
+- [ ] Add sorting options of results
 - [ ] Design a new icon
 - [ ] Publish the extension
