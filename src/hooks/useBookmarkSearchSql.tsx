@@ -5,26 +5,38 @@ import { SearchResult, HistoryEntry } from "../interfaces";
 import { getDbPath } from "../util";
 import { NotInstalledError } from "../components";
 
-const dbBookmarks = "moz_bookmarks";
+// const dbBookmarks = "moz_bookmarks";
 
 const whereClauses = (terms: string[]) => {
   return terms.map((t) => `title LIKE '%${t}%'`).join(" AND ");
 };
 
-const getHistoryQuery = (query?: string) => {
+const getBookmarksQuery = (query?: string) => {
   const terms = query ? query.trim().split(" ") : [];
-  const whereBase = "type = '1' AND title IS NOT NULL";
-  const whereClause = terms.length > 0 ? `WHERE (${whereBase} AND (${whereClauses(terms)}))` : `WHERE ${whereBase}`;
-  return `SELECT
-            id, fk, title,
-            datetime(dateAdded/1000000,'unixepoch') as lastVisited
-          FROM ${dbBookmarks}
-          ${whereClause}
-          ORDER BY dateAdded DESC LIMIT 1000;`;
+  const whereBase = "mb.type = '1' AND mb.title IS NOT NULL AND mp.url NOT LIKE 'javascript:%'";
+  const whereClause = terms.length > 0 ? `(${whereBase} AND (${whereClauses(terms)}))` : whereBase;
+  return `
+    SELECT
+      mp.id AS id,
+      mb.title AS title,
+      mp.url AS url,
+      mp.url_hash AS url_hash,
+      datetime(mp.last_visit_date/1000000, 'unixepoch') AS lastVisited
+    FROM 
+      moz_bookmarks AS mb
+    JOIN
+      moz_places AS mp
+    ON
+      mb.fk = mp.id
+    WHERE
+      ${whereClause}
+    ORDER BY 
+      lastVisited DESC LIMIT 1000;
+`;
 };
 
 export function useBookmarkSearchSql(query: string | undefined): SearchResult<HistoryEntry> {
-  const inQuery = getHistoryQuery(query);
+  const inQuery = getBookmarksQuery(query);
   const dbPath = getDbPath();
 
   if (!existsSync(dbPath)) {

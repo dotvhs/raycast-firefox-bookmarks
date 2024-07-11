@@ -13,7 +13,7 @@ The key differences are:
 TODO:
 
 - [x] Move from Apple Script to shell command
-- [x] Do not show bookmarklets
+- [x] Do not show bookmarklets **(WIP)**
 - [x] Get favicons from Firefox directly **(WIP)**
 - [x] Remove unnecessary code of removed features
 - [x] Read Bookmarks from SQLite as an option **(WIP)**
