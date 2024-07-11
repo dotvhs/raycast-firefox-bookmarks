@@ -13,7 +13,7 @@ function HistoryListEntry({ entry: { url, title, id, lastVisited, favIcon } }: {
       id={id.toString()}
       title={title || ""}
       subtitle={url}
-      icon={favIcon ? { source: favIcon, mask: Image.Mask.RoundedRectangle } : getFavicon(url)}
+      icon={favIcon ? { source: favIcon, mask: Image.Mask.RoundedRectangle, fallback: Icon.Link } : getFavicon(url)}
       actions={<FirefoxActions.HistoryItem entry={{ url, title, id, lastVisited }} />}
     />
   );
