@@ -5,10 +5,8 @@ import { SearchResult, HistoryEntry } from "../interfaces";
 import { getDbPath } from "../util";
 import { NotInstalledError } from "../components";
 
-// const dbBookmarks = "moz_bookmarks";
-
 const whereClauses = (terms: string[]) => {
-  return terms.map((t) => `title LIKE '%${t}%'`).join(" AND ");
+  return terms.map((t) => `mb.title LIKE '%${t}%'`).join(" AND ");
 };
 
 const getBookmarksQuery = (query?: string) => {
