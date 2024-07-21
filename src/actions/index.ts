@@ -8,7 +8,7 @@ export function openHistoryTab(url: string) {
   popToRoot();
   closeMainWindow({ clearRootSearch: true });
 
-  const script = `${OPEN_COMMAND} ${url}`;
+  const script = `${OPEN_COMMAND} "${url}"`;
   // await checkAppInstalled();
 
   return execSync(script);
