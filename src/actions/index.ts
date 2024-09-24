@@ -8,9 +8,10 @@ export function openInFirefox(url: string, newWindow: boolean = false) {
   popToRoot();
   closeMainWindow({ clearRootSearch: true });
 
-  const param = newWindow ? "--new" : "";
+  const param = newWindow ? "-na" : "-a";
+  const args = newWindow ? "--args --new-window" : "";
 
-  const script = `open -a ${APP_NAME} ${param} "${url}"`;
+  const script = `open ${param} "${APP_NAME}" ${args} "${url}"`;
   // await checkAppInstalled();
 
   return execSync(script);

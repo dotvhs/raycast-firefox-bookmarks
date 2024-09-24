@@ -55,11 +55,11 @@
     {
       "name": "open-firefox",
       "type": "textfield",
-      "title": "Firefox Command",
+      "title": "Firefox App name",
       "subtitle": "Console command to open Firefox",
       "description": "Shell command to open Firefox. Adjust this in case you're using non-standard version of Firefox.",
-      "default": "firefox",
-      "placeholder": "e.g. firefox",
+      "default": "Firefox",
+      "placeholder": "e.g. Firefox",
       "required": false
     }
   ],
