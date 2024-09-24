@@ -2,13 +2,15 @@ import { closeMainWindow, popToRoot } from "@raycast/api";
 // import { runAppleScript } from "run-applescript";
 import { execSync } from "child_process";
 // import { Tab } from "../interfaces";
-import { OPEN_COMMAND, NOT_INSTALLED_MESSAGE } from "../constants";
+import { APP_NAME, NOT_INSTALLED_MESSAGE } from "../constants";
 
-export function openHistoryTab(url: string) {
+export function openInFirefox(url: string, newWindow: boolean = false) {
   popToRoot();
   closeMainWindow({ clearRootSearch: true });
 
-  const script = `${OPEN_COMMAND} "${url}"`;
+  const param = newWindow ? "--new" : "";
+
+  const script = `open -a ${APP_NAME} ${param} "${url}"`;
   // await checkAppInstalled();
 
   return execSync(script);

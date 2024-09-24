@@ -4,9 +4,20 @@ import { useSQL } from "@raycast/utils";
 import { SearchResult, HistoryEntry } from "../interfaces";
 import { getDbPath } from "../util";
 import { NotInstalledError } from "../components";
+import { SORT_RESULTS } from "../constants";
 
 const whereClauses = (terms: string[]) => {
   return terms.map((t) => `mb.title LIKE '%${t}%'`).join(" AND ");
+};
+
+const sortOrder = {
+  ascending: "ASC",
+  descending: "DESC",
+};
+
+const orderBy = {
+  "last-visited": "lastVisited",
+  "date-added": "mb.dateAdded",
 };
 
 const getBookmarksQuery = (query?: string) => {
@@ -29,7 +40,7 @@ const getBookmarksQuery = (query?: string) => {
     WHERE
       ${whereClause}
     ORDER BY 
-      lastVisited DESC LIMIT 1000;
+      ${orderBy["last-visited"]} ${sortOrder[SORT_RESULTS]} LIMIT 1000;
 `;
 };
 

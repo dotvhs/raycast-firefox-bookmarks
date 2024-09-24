@@ -35,13 +35,31 @@
       "required": false
     },
     {
+      "name": "sort-results",
+      "type": "dropdown",
+      "title": "Sorting order",
+      "description": "Customize the order of the results",
+      "default": "descending",
+      "data": [
+        {
+          "title": "Descending",
+          "value": "descending"
+        },
+        {
+          "title": "Ascending",
+          "value": "ascending"
+        }
+      ],
+      "required": false
+    },
+    {
       "name": "open-firefox",
       "type": "textfield",
       "title": "Firefox Command",
       "subtitle": "Console command to open Firefox",
       "description": "Shell command to open Firefox. Adjust this in case you're using non-standard version of Firefox.",
-      "default": "open -a firefox",
-      "placeholder": "open -a firefox",
+      "default": "firefox",
+      "placeholder": "e.g. firefox",
       "required": false
     }
   ],
